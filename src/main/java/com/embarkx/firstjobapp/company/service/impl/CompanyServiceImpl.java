@@ -84,11 +84,11 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyResponse  findCompanyById(String companyID) {
-        Company job = repository.
+        Company company = repository.
                 findById(companyID).
                 orElseThrow(() -> new CompanyNotFoundException("Company is not found with id" + companyID));
 
-        return  CompanyToCompanyRequester(job);
+        return  CompanyToCompanyRequester(company);
     }
 
     @Override
