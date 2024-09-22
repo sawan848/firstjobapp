@@ -1,5 +1,6 @@
 package com.embarkx.firstjobapp.job.model;
 
+import com.embarkx.firstjobapp.company.model.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +24,7 @@ public class Job implements Serializable {
     private String location;
     private String createdAt;
     private String updatedAt;
+
+    @ManyToOne
+    private  Company company;
 }

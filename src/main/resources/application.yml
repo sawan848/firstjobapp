@@ -1,8 +1,28 @@
 server:
+  shutdown: graceful
   port: 9896
+
+info:
+  app:
+    description: Job app built with Embark
+    version: 1.0.0
+    name: job app
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 spring:
-
-
   application:
   name: firstjobapp
   jpa:

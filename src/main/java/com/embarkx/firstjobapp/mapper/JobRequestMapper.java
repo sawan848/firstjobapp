@@ -4,11 +4,10 @@ import com.embarkx.firstjobapp.dto.JobRequest;
 import com.embarkx.firstjobapp.dto.JobResponse;
 import com.embarkx.firstjobapp.job.model.Job;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JobReuestMappper {
+public class JobRequestMapper {
 
     public static List<JobResponse> jobListToJobResponseList(List<Job> jobList){
         return jobList.stream().map(job -> new JobResponse(
@@ -20,7 +19,8 @@ public class JobReuestMappper {
                 job.getMaxSalary(),
                 job.getLocation(),
                 job.getCreatedAt(),
-                job.getUpdatedAt()
+                job.getUpdatedAt(),
+                job.getCompany()
         )).collect(Collectors.toList());
 
 
@@ -42,7 +42,8 @@ public class JobReuestMappper {
                 job.maxSalary(),
                 job.location(),
                 job.createdAt(),
-                job.updatedAt()
+                job.updatedAt(),
+                job.company()
         );
     }
     public static JobResponse JobToJobRequester(Job job){
@@ -54,7 +55,8 @@ public class JobReuestMappper {
                 job.getMaxSalary(),
                 job.getLocation(),
                 job.getCreatedAt(),
-                job.getUpdatedAt()
+                job.getUpdatedAt(),
+                job.getCompany()
         );
     }
 

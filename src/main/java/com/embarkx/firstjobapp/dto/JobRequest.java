@@ -1,5 +1,6 @@
 package com.embarkx.firstjobapp.dto;
 
+import com.embarkx.firstjobapp.company.model.Company;
 import jakarta.validation.constraints.*;
 
 public record JobRequest(
@@ -15,6 +16,7 @@ public record JobRequest(
         @Max(message = "Max salary should not be 0x7fffffff", value = Integer.MAX_VALUE)
         Double maxSalary,
         @NotEmpty(message = "location cannot be null or empty")
-        String location
+        String location,
+        Company company
 ) {
 }
