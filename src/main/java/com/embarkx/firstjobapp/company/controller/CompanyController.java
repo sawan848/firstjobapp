@@ -44,7 +44,7 @@ public class CompanyController {
                 body(service.updateCompany( companyID,request));
     }
     @GetMapping("/{companyID}")
-    public ResponseEntity<CompanyResponse> getJobByID(@PathVariable
+    public ResponseEntity<CompanyResponse> findCompanybByID(@PathVariable
                                                  @NotNull(message = "Company ID cannot be empty")
 
                                                      String companyID) {
