@@ -1,1 +1,1 @@
-@Job search application using spring boot, postgreSQL,Docker
+Job search application using spring boot, postgreSQL,Docker
