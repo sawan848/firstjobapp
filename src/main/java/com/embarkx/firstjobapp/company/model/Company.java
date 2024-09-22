@@ -1,10 +1,8 @@
 package com.embarkx.firstjobapp.company.model;
 
 import com.embarkx.firstjobapp.job.model.Job;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +24,7 @@ public class Company implements Serializable {
     private String createdAt;
     private String updatedAt;
 
-    @OneToMany
+
+   @OneToMany(mappedBy = "company")
     private List<Job>jobs;
 }

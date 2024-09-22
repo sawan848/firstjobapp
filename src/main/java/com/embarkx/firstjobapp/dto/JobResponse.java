@@ -1,6 +1,8 @@
 package com.embarkx.firstjobapp.dto;
 
 
+import com.embarkx.firstjobapp.company.model.Company;
+
 public record JobResponse(
         String id,
         String title,
@@ -10,7 +12,8 @@ public record JobResponse(
         double maxSalary,
         String location,
         String createdAt,
-        String updatedAt
+        String updatedAt,
+        Company company
 ) {
     public JobResponse update(
             String title,
@@ -19,7 +22,8 @@ public record JobResponse(
             double minSalary,
             double maxSalary,
             String location,
-            String updatedAt) {
+            String updatedAt,
+            Company company) {
         return new JobResponse(
                 this.id,
                 title,
@@ -29,7 +33,8 @@ public record JobResponse(
                 maxSalary,
                 location,
                 this.createdAt,
-                updatedAt
+                updatedAt,
+                company
         );
     }
 }

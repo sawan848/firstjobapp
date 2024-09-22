@@ -1,5 +1,6 @@
 package com.embarkx.firstjobapp.job.service.impl;
 
+import com.embarkx.firstjobapp.company.model.Company;
 import com.embarkx.firstjobapp.dto.JobRequest;
 import com.embarkx.firstjobapp.dto.JobResponse;
 import com.embarkx.firstjobapp.exception.JobNotFoundException;
@@ -14,7 +15,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static com.embarkx.firstjobapp.mapper.JobReuestMappper.*;
+import static com.embarkx.firstjobapp.mapper.JobRequestMapper.*;
 
 @Service
 @Slf4j
@@ -36,6 +37,7 @@ public class JobServiceImpl implements JobService {
           request.setId(UUID.randomUUID().toString());
           request.setCreatedAt(created);
           request.setUpdatedAt(created);
+          request.setCompany(job.company());
           log.info("created {}",request);
 //          System.out.println("save = " + save);
           var save=repository.save(request);
@@ -53,7 +55,7 @@ public class JobServiceImpl implements JobService {
         try {
             var format=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a z");
             String updated=format.format(ZonedDateTime.now());
-
+            log.info(" job {}",job);
             var response=findByJobId(jobID);
             if (response!=null){
               JobResponse updateResponse =  response.update(job.title(),
@@ -62,7 +64,8 @@ public class JobServiceImpl implements JobService {
                         job.maxSalary(),
                         job.minSalary(),
                         job.location(),
-                        updated);
+                        updated,
+                      job.company());
               var OriginalResponse=repository.save(
               JobResponseToJob(updateResponse));
                 log.info("created {}",response);
